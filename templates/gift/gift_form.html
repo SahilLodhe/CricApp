@@ -1,0 +1,77 @@
+{%extends 'registration/base.html'%}{% load bootstrap3 %} {% block content %}
+{% if submitted %}
+<p class="success">Your player has been gifted succesfully!</p>
+{% else %}
+
+<div
+  class="container"
+  align="center"
+  style="position: absolute; left: 180px; margin-top: 0px; width: 50%"
+>
+  <div class="row">
+    <div
+      class="col-md-10"
+      style="position: relative; left: 250px; margin-top: 80px; width: 50%"
+    >
+      <div class="card" style="margin-top: 10px; margin-right: 20px">
+        <div class="card-header bg-dark text-white" style="background-color: red;">
+          <h4>Gift Your Player!</h4>
+        </div>
+        <br />
+        <div class="card-body" style="background-color: hsl(191, 85%, 61%);">
+          <div class="col-md-12">
+            <h3 class="gift_player_class">
+              Who do you want to gift
+              <a href="{% url 'player:PlayerDetail' pk=player.pk %}"
+                ><span class="gift_player_name">{{player.name}}</span></a
+              >
+              to?
+            </h3>
+            <form method="POST">
+              {% csrf_token %}
+              <div class="dropdown col-xs-6" style="width: 60%">
+                <tr>
+                  <div class="form-group" style="margin-left : 1.25rem">
+                    <th>
+                      <label for="ownerplayer"
+                        ><span style="color: blue">Recipient </span>:</label
+                      >
+                    </th>
+                    {% if form.ownerplayer != user.username %}
+                    
+                    <td>{{form.ownerplayer}}</td>
+                    {% else %}
+                    {% endif %}
+                  </div>
+                </tr>
+              </div>
+              <button type="submit" class="save btn btn-dark">Gift</button>
+              <a href="{% url 'player:PlayerDetail' pk=player.pk %}"><button type="submit" class="save btn btn-danger">Cancel</button></a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Insufficient Players</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Player has been Succesfully gifted!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+{% endblock %}

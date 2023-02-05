@@ -1,0 +1,39 @@
+{% extends "registration/base.html" %} {% load crispy_forms_tags %}{% load bootstrap3 %} {% block content %}
+<div class="content-section">
+  <div class="media">
+    <img
+      class="rounded-circle account-img"
+      src="{{ user.profile.image.url }}"
+    />
+    <div class="media-body">
+      
+    </div>
+  </div>
+  <!-- FORM HERE -->
+  <div class="container" align="left" style="position: absolute;left:200px;margin-top:0px;width:50%">
+    <div class="row" >
+        <div class="col-md-10" style="position: relative;left:250px;margin-top:80px;width:50%">
+            <div class="card" style="margin-top:10px; margin-right:20px;">
+                <div class="card-header bg-dark text-white"><h1 class="formheading">Update your profile</h1></div> <br>
+                    <div class="card-body">
+                        <div class="col-md-12" >
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Profile Info</legend>
+      {{ user_form.as_p }} {{ profile_form.as_p }}
+      
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Update</button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

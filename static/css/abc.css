@@ -1,0 +1,59 @@
+.player_urls_list{
+    font-style: oblique;
+    color: black;
+    text-underline-position:initial
+}
+.about{
+    background-color: aqua;
+    text-align: center;
+}
+body{
+	background-color: rgb(121, 126, 110);
+}
+
+/* IPL team list */
+.iplteamlistheading{
+    text-align: center;
+    background: fixed;
+}
+
+/* Player list */
+
+.row .col {
+    width: 1000px;
+    height: auto;
+    background: rgb(199, 212, 199);
+}
+
+.plist{
+    text-align: center;
+}
+
+/* new player */
+.newform{
+    background-color: rgb(226, 226, 204);
+    height: auto;
+}
+
+.formheading{
+    text-align: center;
+}
+
+/* player_details */
+
+.playermain{
+    text-align: center;
+}
+
+.playername{
+    font-weight: bold;
+}
+.playerdetailbody{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.deliplteam{
+    text-align: center;
+    background-color: crimson;
+}
+

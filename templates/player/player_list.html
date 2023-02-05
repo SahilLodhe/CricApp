@@ -1,0 +1,254 @@
+{%extends 'registration/base.html'%} {% block content %}
+<div class="jumbotron">
+  <h1 class="plist">ALL PLAYERS!</h1>
+  <h1 class="plist">THE TOTAL NUMBER OF PLAYERS ARE : {{no_of_players}}</h1>
+  <!-- <div id="Batsman_table">
+  <table>
+    <tbody>
+      <tr>
+        <th>Batsmen</th>
+      </tr>
+      
+      {% for player in player_list %}
+      <tr>
+        <td>
+          {% if player.Role == "Batsman" %}
+          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=player.pk %}">{{player.name}}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div id="Batting_Allrounders_table">
+  <table>
+    <tbody>
+      <tr>
+        <th>Batting Allrounders</th>
+      </tr>
+      
+      {% for player in player_list %}
+      <tr>
+        <td>
+          {% if player.Role == "Batting Allrounder" %}
+          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=player.pk %}">{{player.name}}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div id="Bowling_Allrounders_table">
+  <table>
+    <tbody>
+      <tr>
+        <th>Bowling Allrounders</th>
+      </tr>
+      
+      {% for player in player_list %}
+      <tr>
+        <td>
+          {% if player.Role == "Bowling Allrounder" %}
+          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=player.pk %}">{{player.name}}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+  <div id="Fast_Bowler_table">
+  <table>
+    <tbody>
+      <tr>
+        <th>Fast Bowlers</th>
+      </tr>
+      
+      {% for player in player_list %}
+      <tr>
+        <td>
+          {% if player.Role == "Fast Bowler" %}
+          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=player.pk %}">{{player.name}}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div id="Spin_Bowler_table">
+  <table>
+    <tbody>
+      <tr>
+        <th>Spin Bowlers</th>
+      </tr>
+      
+      {% for player in player_list %}
+      <tr>
+        <td>
+          {% if player.Role == "Spin Bowler" %}
+          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=player.pk %}">{{player.name}}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div> -->
+
+  <div class="container px-50 py-50">
+    <div class="row">
+      <div class="col mx-1">
+        <table>
+          <tbody>
+            <tr>
+              <th>Batsmen</th>
+            </tr>
+
+            {% for player in player_list %}
+            <tr>
+              <td>
+                {% if player.Role == "Batsman" %}
+                <a
+                  class="player_urls_list"
+                  href="{% url 'player:PlayerDetail' pk=player.pk %}"
+                  >{{player.name}}</a
+                >
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col mx-1">
+        <table>
+          <tbody>
+            <tr>
+              <th>Batting Allrounders</th>
+            </tr>
+
+            {% for player in player_list %}
+            <tr>
+              <td>
+                {% if player.Role == "Batting Allrounder" %}
+                <a
+                  class="player_urls_list"
+                  href="{% url 'player:PlayerDetail' pk=player.pk %}"
+                  >{{player.name}}</a
+                >
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col mx-1">
+        <table>
+          <tbody>
+            <tr>
+              <th>Bowling Allrounders</th>
+            </tr>
+
+            {% for player in player_list %}
+            <tr>
+              <td>
+                {% if player.Role == "Bowling Allrounder" %}
+                <a
+                  class="player_urls_list"
+                  href="{% url 'player:PlayerDetail' pk=player.pk %}"
+                  >{{player.name}}</a
+                >
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="col mx-1">
+        <table>
+          <tbody>
+            <tr>
+              <th>Fast Bowlers</th>
+            </tr>
+
+            {% for player in player_list %}
+            <tr>
+              <td>
+                {% if player.Role == "Fast Bowler" %}
+                <a
+                  class="player_urls_list"
+                  href="{% url 'player:PlayerDetail' pk=player.pk %}"
+                  >{{player.name}}</a
+                >
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="col mx-1">
+        <table>
+          <tbody>
+            <tr>
+              <th>Spin Bowlers</th>
+            </tr>
+
+            {% for player in player_list %}
+            <tr>
+              <td>
+                {% if player.Role == "Spin Bowler" %}
+                <a
+                  class="player_urls_list"
+                  href="{% url 'player:PlayerDetail' pk=player.pk %}"
+                  >{{player.name}}</a
+                >
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card text-center">
+    <div class="card-header">Hey {{user.username}}! Want to view some stats?</div>
+    <div class="card-body">
+      <h5 class="card-title">Best Teams</h5>
+      <a href="{% url 'player:worldODIXI' %}" class="btn btn-primary"
+        >ODI XI</a
+      >
+      <a href="{% url 'player:worldTestXI' %}" class="btn btn-primary"
+        >TEST XI</a
+      >
+      <a href="{% url 'player:worldT20XI' %}" class="btn btn-primary"
+        >T20 XI</a
+      >
+      <a href="{% url 'player:IPLXI' %}" class="btn btn-primary"
+        >IPL XI</a
+      >
+      <a href="{% url 'player:ViewStats' %}" class="btn btn-primary"
+        >View Graphs</a
+      >
+    </div>
+  </div>
+</div>
+  <br />
+  <br />
+
+
+{% endblock %}

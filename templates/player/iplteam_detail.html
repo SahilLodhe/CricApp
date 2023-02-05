@@ -1,0 +1,18 @@
+{%extends 'registration/base.html'%}
+
+{% block content %}
+hello, this is the iplteam_detail page 
+<h1>The owner of the team is : {{iplteam.owner.username}}</h1>
+<h1>The name of the team is : {{iplteam.name}}</h1>
+<h1>The total number of matches played by {{iplteam.name}} are : {{iplteam.matches_played}}</h1>
+<h1>The total number of matches won by {{iplteam.name}} are : {{iplteam.matches_won}}</h1>
+<h1>{{iplteam.name}} has lost {{iplteam.matches_lost}}</h1>
+<h1>{{iplteam.name}} has won {{iplteam.trophies_won}} trophies so far!</h1>
+<h1>{{iplteam.name}} has a win percentage of {{iplteam.win_p}}</h1>
+{% comment %} <h2><a href="{% url 'player:IPLTeamUpdate' pk=iplteam.pk %}">DO YOU WANT TO UPDATE DETAILS?</a></h2>
+<h2><a href="{% url 'player:IPLTeamDelete' pk=iplteam.pk %}">DO YOU WANT TO DELETE THE TEAM?</a></h2>
+<a href="{% url 'player:Playersofiplteam' pk=iplteam.pk %}">View the list of players present in team {{iplteam.name}}</a>
+<a href="{% url 'player:IPLTeamX1' pk=iplteam.pk %}">view the best X1 for team {{iplteam.name}}</a> {% endcomment %}
+
+{% endblock %}
+

@@ -1,0 +1,24 @@
+{%extends 'registration/base.html'%} {% load bootstrap3 %} {% block content %}
+
+
+<div class="container" align="left" style="position: absolute;left:200px;margin-top:0px;width:50%">
+    <div class="row" >
+        <div class="col-md-10" style="position: relative;left:250px;margin-top:80px;width:50%">
+            <div class="card" style="margin-top:10px; margin-right:20px;">
+                <div class="card-header bg-dark text-white"><h1 class="formheading">New International Team</h1></div> <br>
+                    <div class="card-body">
+                        <div class="col-md-12" >
+    <h1 class="formheading"></h1>
+    <form method="POST">
+      {% csrf_token %} {% bootstrap_form form %}
+      <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

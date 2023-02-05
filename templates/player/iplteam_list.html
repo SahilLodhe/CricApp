@@ -1,0 +1,86 @@
+{%extends 'registration/base.html'%} {% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="iplteamlistheading">
+      <h1>HERE IS THE LIST OF TEAMS</h1>
+      <h1>THE TOTAL NUMBER OF TEAMS ARE : {{no_of_teams}}</h1>
+    </div>
+    {% comment %} {% for iplteam in IPLTeam_list %} {% endcomment %}
+    <div class="container">
+      <div class="row">
+        <table>
+          <tbody>
+            <tr>
+              <th>Team Name</th>
+              <th>View Players</th>
+              <th>Team XI</th>
+              
+              {% if user.is_superuser %}
+              
+              <th>Edit</th>
+              <th>Delete</th>
+              {% else %}
+              {% endif %}
+             
+            </tr>
+            {% for iplteam in IPLTeam_list %}
+            <tr>
+              <td>
+                <a href="{% url 'player:IPLTeamDetail' pk=iplteam.pk %}"
+                  >{{iplteam.name}}</a
+                >
+              </td>
+              <td>
+                <a href="{% url 'player:Playersofiplteam' pk=iplteam.pk %}"
+                  ><button type="button" class="btn btn-info">
+                    Players
+                  </button></a
+                >
+              </td>
+              <td>
+                {% if user.is_authenticated %}
+                  <a href="{% url 'player:IPLTeamX1' pk=iplteam.pk %}"
+                    ><button type="button" class="btn btn-info">
+                      Team XI
+                    </button></a
+                  >
+                  {% else %}
+                  <a href="{% url 'login'  %}"
+                    ><button type="button" class="btn btn-info">
+                      Team XI
+                    </button></a
+                  >
+                {% endif %}
+                </td>
+              <td>
+              {% if user.is_superuser %}
+              
+                <a href="{% url 'player:IPLTeamUpdate' pk=iplteam.pk %}"
+                  ><button type="button" class="btn btn-warning">
+                    Edit
+                  </button></a
+                >
+              </td>
+              <td>
+                <a href="{% url 'player:IPLTeamDelete' pk=iplteam.pk %}"
+                  ><button type="button" class="btn btn-danger">
+                    Delete
+                  </button></a
+                >
+              {% else %}
+              {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!-- <h2><a href="{% url 'player:IPLTeamUpdate' pk=iplteam.pk %}">DO YOU WANT TO UPDATE DETAILS?</a></h2>
+<h2><a href="{% url 'player:IPLTeamDelete' pk=iplteam.pk %}">DO YOU WANT TO DELETE THE TEAM?</a></h2>
+<a href="{% url 'player:Playersofiplteam' pk=iplteam.pk %}">View the list of players present in team {{iplteam.name}}</a>
+<a href="{% url 'player:IPLTeamX1' pk=iplteam.pk %}">view the best X1 for team {{iplteam.name}}</a> -->

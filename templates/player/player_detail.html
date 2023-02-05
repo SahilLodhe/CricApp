@@ -1,0 +1,292 @@
+{%extends 'registration/base.html'%} {% block content %} {% load static %}{% load bootstrap3 %}
+<!-- hello, this is the
+player_detail page -->
+<!-- <h1>{{player.name}}</h1>
+<h6>Role : {{player.Role}}</h6>
+<h6>IPL team : {{player.iplteam.name}}</h6>
+<h6>INTL team : {{player.intlteam.name}}</h6>
+<h6>Indirect owner : {{player.iplteam.owner.username}}</h6>
+
+<h1>ODI</h1> 
+<h6>Total ODI matches played : {{player.ODIs_played}}</h6>
+<h6>Total ODI innings played : {{player.ODIs_innings_played}}</h6>
+<h6>total runs in ODI : {{player.total_runsODI}}</h6>
+<h6>total balls faced in ODI : {{player.total_balls_facedODI}}</h6>
+<h6>bat avg : {{player.get_bat_avg_ODI}}</h6>
+<h6>SR : {{player.get_SR_ODI}}</h6>
+<h6>Not outs : {{player.not_outsODI}}</h6>
+<h6>50s : {{player.fiftiesODI}}</h6>
+<h6>100s : {{player.hundredsODI}}</h6>
+<h6>innings bowled : {{player.innings_bowled_ODI}}</h6>
+<h6>total balls : {{player.total_bowlsODI}}</h6>
+<h6>total runs given : {{player.total_runs_givenODI}}</h6>
+<h6>wickets : {{player.wicketsODI}}</h6>
+<h6>eco : {{player.get_economy_ODI}}</h6>
+<h6>bowl avg : {{player.get_bowl_avgODI}}</h6>
+
+<h1>Test</h1>
+<h6>Total matches played : {{player.Tests_played}}</h6>
+<h6>Total innings played : {{player.Tests_innings_played}}</h6>
+<h6>total runs : {{player.total_runsTest}}</h6>
+<h6>total balls : {{player.total_balls_facedTest}}</h6>
+<h6>bat avg : {{player.get_bat_avg_Test}}</h6>
+<h6>SR : {{player.get_SR_Test}}</h6>
+<h6>Not outs : {{player.not_outsTest}}</h6>
+<h6>50s : {{player.fiftiesTest}}</h6>
+<h6>100s : {{player.hundredsTest}}</h6>
+<h6>innings bowled : {{player.innings_bowled_Test}}</h6>
+<h6>total balls : {{player.total_bowlsTest}}</h6>
+<h6>total runs given : {{player.total_runs_givenTest}}</h6>
+<h6>wickets : {{player.wicketsTest}}</h6>
+<h6>eco : {{player.get_economy_Test}}</h6>
+<h6>bowl avg : {{player.get_bowl_avgTest}}</h6>
+
+<h1>T20</h1>
+<h6>Total matches played : {{player.T20s_played}}</h6>
+<h6>Total innings played : {{player.T20s_innings_played}}</h6>
+<h6>total runs : {{player.total_runsT20}}</h6>
+<h6>total balls : {{player.total_balls_facedT20}}</h6>
+<h6>bat avg : {{player.get_bat_avg_T20}}</h6>
+<h6>SR : {{player.get_SR_T20}}</h6>
+<h6>Not outs : {{player.not_outsT20}}</h6>
+<h6>50s : {{player.fiftiesT20}}</h6>
+<h6>100s : {{player.hundredsT20}}</h6>
+<h6>innings bowled : {{player.innings_bowled_T20}}</h6>
+<h6>total balls : {{player.total_bowlsT20}}</h6>
+<h6>total runs given : {{player.total_runs_givenT20}}</h6>
+<h6>wickets : {{player.wicketsT20}}</h6>
+<h6>eco : {{player.get_economy_T20}}</h6>
+
+
+<h1>IPL</h1>
+<h6>Total matches played : {{player.IPLs_played}}</h6>
+<h6>Total innings played : {{player.IPLs_innings_played}}</h6>
+<h6>total runs : {{player.total_runsIPL}}</h6>
+<h6>total balls : {{player.total_balls_facedIPL}}</h6>
+<h6>bat avg : {{player.get_bat_avg_IPL}}</h6>
+<h6>SR : {{player.get_SR_IPL}}</h6>
+<h6>Not outs : {{player.not_outsIPL}}</h6>
+<h6>50s : {{player.fiftiesIPL}}</h6>
+<h6>100s : {{player.hundredsIPL}}</h6>
+<h6>{{player.innings_bowled_IPL}}</h6>
+<h6>{{player.total_bowlsIPL}}</h6>
+<h6>{{player.total_runs_givenT20}}</h6>
+<h6>{{player.wicketsT20}}</h6> -->
+
+<!-- <div class="playerdetails">
+  <h1>{{player.name}}</h1>
+  <h6>Role : {{player.Role}}</h6>
+  <h6>IPL team : {{player.iplteam.name}}</h6>
+  <h6>INTL team : {{player.intlteam.name}}</h6>
+  <h6>Indirect owner : {{player.iplteam.owner.username}}</h6>
+</div>
+<div class="playerdetails">
+  <h1>ODI</h1>
+  <h6>Total ODI matches played : {{player.ODIs_played}}</h6>
+  <h6>Total ODI innings played : {{player.ODIs_innings_played}}</h6>
+  <h6>total runs in ODI : {{player.total_runsODI}}</h6>
+  <h6>total balls faced in ODI : {{player.total_balls_facedODI}}</h6>
+  <h6>bat avg : {{player.get_bat_avg_ODI}}</h6>
+  <h6>SR : {{player.get_SR_ODI}}</h6>
+  <h6>Not outs : {{player.not_outsODI}}</h6>
+  <h6>50s : {{player.fiftiesODI}}</h6>
+  <h6>100s : {{player.hundredsODI}}</h6>
+  <h6>innings bowled : {{player.innings_bowled_ODI}}</h6>
+  <h6>total balls : {{player.total_bowlsODI}}</h6>
+  <h6>total runs given : {{player.total_runs_givenODI}}</h6>
+  <h6>wickets : {{player.wicketsODI}}</h6>
+  <h6>eco : {{player.get_economy_ODI}}</h6>
+  <h6>bowl avg : {{player.get_bowl_avgODI}}</h6>
+</div>
+<div class="playerdetails">
+  <h1>Test</h1>
+  <h6>Total matches played : {{player.Tests_played}}</h6>
+  <h6>Total innings played : {{player.Tests_innings_played}}</h6>
+  <h6>total runs : {{player.total_runsTest}}</h6>
+  <h6>total balls : {{player.total_balls_facedTest}}</h6>
+  <h6>bat avg : {{player.get_bat_avg_Test}}</h6>
+  <h6>SR : {{player.get_SR_Test}}</h6>
+  <h6>Not outs : {{player.not_outsTest}}</h6>
+  <h6>50s : {{player.fiftiesTest}}</h6>
+  <h6>100s : {{player.hundredsTest}}</h6>
+  <h6>innings bowled : {{player.innings_bowled_Test}}</h6>
+  <h6>total balls : {{player.total_bowlsTest}}</h6>
+  <h6>total runs given : {{player.total_runs_givenTest}}</h6>
+  <h6>wickets : {{player.wicketsTest}}</h6>
+  <h6>eco : {{player.get_economy_Test}}</h6>
+  <h6>bowl avg : {{player.get_bowl_avgTest}}</h6>
+</div>
+<div class="playerdetails">
+  <h1>T20</h1>
+  <h6>Total matches played : {{player.T20s_played}}</h6>
+  <h6>Total innings played : {{player.T20s_innings_played}}</h6>
+  <h6>total runs : {{player.total_runsT20}}</h6>
+  <h6>total balls : {{player.total_balls_facedT20}}</h6>
+  <h6>bat avg : {{player.get_bat_avg_T20}}</h6>
+  <h6>SR : {{player.get_SR_T20}}</h6>
+  <h6>Not outs : {{player.not_outsT20}}</h6>
+  <h6>50s : {{player.fiftiesT20}}</h6>
+  <h6>100s : {{player.hundredsT20}}</h6>
+  <h6>innings bowled : {{player.innings_bowled_T20}}</h6>
+  <h6>total balls : {{player.total_bowlsT20}}</h6>
+  <h6>total runs given : {{player.total_runs_givenT20}}</h6>
+  <h6>wickets : {{player.wicketsT20}}</h6>
+  <h6>eco : {{player.get_economy_T20}}</h6>
+</div>
+<div class="playerdetails">
+  <h1>IPL</h1>
+  <h6>Total matches played : {{player.IPLs_played}}</h6>
+  <h6>Total innings played : {{player.IPLs_innings_played}}</h6>
+  <h6>total runs : {{player.total_runsIPL}}</h6>
+  <h6>total balls : {{player.total_balls_facedIPL}}</h6>
+  <h6>bat avg : {{player.get_bat_avg_IPL}}</h6>
+  <h6>SR : {{player.get_SR_IPL}}</h6>
+  <h6>Not outs : {{player.not_outsIPL}}</h6>
+  <h6>50s : {{player.fiftiesIPL}}</h6>
+  <h6>100s : {{player.hundredsIPL}}</h6>
+  <h6>innings bowled : {{player.innings_bowled_IPL}}</h6>
+  <h6>total balls : {{player.total_bowlsIPL}}</h6>
+  <h6>wickets : {{player.total_runs_givenIPL}}</h6>
+  <h6>eco : {{player.wicketsIPL}}</h6>
+</div> -->
+<div class="playerdetailbody">
+  <div class="container">
+    <div class="row">
+      <div class="col mx-1">
+        
+        {% if player.player_image.url %}
+
+        <img class="player_image" src="{{player.player_image.url}}" alt="" />
+
+        {% else %}
+
+        <img class="player_image" src="{% static 'images/players/default.jpg' %}" alt="" />
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="playerdetailbody">
+  <div class="container">
+    <div class="row">
+      <div class="col mx-1">
+        <div class="playermain">
+          <h1 class="playername">{{player.name}}</h1>
+          <h3>Role : {{player.Role}}</h3>
+          <h3>IPL team : {{player.iplteam.name}}</h3>
+          <h3>INTL team : {{player.intlteam.name}}</h3>
+          <h3>Owner : {{player.ownerplayer}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="container px-50 py-50">
+    <div class="row">
+      <div class="col mx-1">
+        <h1>ODI</h1>
+        <h6>Total ODI matches played : {{player.ODIs_played}}</h6>
+        <h6>Total ODI innings played : {{player.ODIs_innings_played}}</h6>
+        <h6>total runs in ODI : {{player.total_runsODI}}</h6>
+        <h6>total balls faced in ODI : {{player.total_balls_facedODI}}</h6>
+        <h6>bat avg : {{player.get_bat_avg_ODI}}</h6>
+        <h6>SR : {{player.get_SR_ODI}}</h6>
+        <h6>Not outs : {{player.not_outsODI}}</h6>
+        <h6>50s : {{player.fiftiesODI}}</h6>
+        <h6>100s : {{player.hundredsODI}}</h6>
+        <h6>innings bowled : {{player.innings_bowled_ODI}}</h6>
+        <h6>total balls : {{player.total_bowlsODI}}</h6>
+        <h6>total runs given : {{player.total_runs_givenODI}}</h6>
+        <h6>wickets : {{player.wicketsODI}}</h6>
+        <h6>eco : {{player.get_economy_ODI}}</h6>
+        <h6>bowl avg : {{player.get_bowl_avgODI}}</h6>
+      </div>
+
+      <div class="col mx-1">
+        <h1>Test</h1>
+        <h6>Total matches played : {{player.Tests_played}}</h6>
+        <h6>Total innings played : {{player.Tests_innings_played}}</h6>
+        <h6>total runs : {{player.total_runsTest}}</h6>
+        <h6>total balls : {{player.total_balls_facedTest}}</h6>
+        <h6>bat avg : {{player.get_bat_avg_Test}}</h6>
+        <h6>SR : {{player.get_SR_Test}}</h6>
+        <h6>Not outs : {{player.not_outsTest}}</h6>
+        <h6>50s : {{player.fiftiesTest}}</h6>
+        <h6>100s : {{player.hundredsTest}}</h6>
+        <h6>innings bowled : {{player.innings_bowled_Test}}</h6>
+        <h6>total balls : {{player.total_bowlsTest}}</h6>
+        <h6>total runs given : {{player.total_runs_givenTest}}</h6>
+        <h6>wickets : {{player.wicketsTest}}</h6>
+        <h6>eco : {{player.get_economy_Test}}</h6>
+        <h6>bowl avg : {{player.get_bowl_avgTest}}</h6>
+      </div>
+      <div class="col mx-1">
+        <h1>T20</h1>
+        <h6>Total matches played : {{player.T20s_played}}</h6>
+        <h6>Total innings played : {{player.T20s_innings_played}}</h6>
+        <h6>total runs : {{player.total_runsT20}}</h6>
+        <h6>total balls : {{player.total_balls_facedT20}}</h6>
+        <h6>bat avg : {{player.get_bat_avg_T20}}</h6>
+        <h6>SR : {{player.get_SR_T20}}</h6>
+        <h6>Not outs : {{player.not_outsT20}}</h6>
+        <h6>50s : {{player.fiftiesT20}}</h6>
+        <h6>100s : {{player.hundredsT20}}</h6>
+        <h6>innings bowled : {{player.innings_bowled_T20}}</h6>
+        <h6>total balls : {{player.total_bowlsT20}}</h6>
+        <h6>total runs given : {{player.total_runs_givenT20}}</h6>
+        <h6>wickets : {{player.wicketsT20}}</h6>
+        <h6>eco : {{player.get_economy_T20}}</h6>
+      </div>
+      <div class="col mx-1">
+        <h1>IPL</h1>
+        <h6>Total matches played : {{player.IPLs_played}}</h6>
+        <h6>Total innings played : {{player.IPLs_innings_played}}</h6>
+        <h6>total runs : {{player.total_runsIPL}}</h6>
+        <h6>total balls : {{player.total_balls_facedIPL}}</h6>
+        <h6>bat avg : {{player.get_bat_avg_IPL}}</h6>
+        <h6>SR : {{player.get_SR_IPL}}</h6>
+        <h6>Not outs : {{player.not_outsIPL}}</h6>
+        <h6>50s : {{player.fiftiesIPL}}</h6>
+        <h6>100s : {{player.hundredsIPL}}</h6>
+        <h6>innings bowled : {{player.innings_bowled_IPL}}</h6>
+        <h6>total balls : {{player.total_bowlsIPL}}</h6>
+        <h6>wickets : {{player.total_runs_givenIPL}}</h6>
+        <h6>eco : {{player.wicketsIPL}}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<h6>
+
+  {% if user.is_superuser or user.username == player.ownerplayer.username %}
+  <div class="card text-center" id="player_modal">
+    <div class="card-header">Hey {{user.username}}! Want to do some changes?</div>
+    <div class="card-body">
+      
+  <a href="{% url 'player:PlayerUpdate' pk=player.pk %}"
+    >DO YOU WANT TO UPDATE DETAILS?</a
+  >
+<br>
+  <a href="{% url 'player:PlayerDelete' pk=player.pk %}"
+    >DO YOU WANT TO DELETE THE PLAYER?</a
+  >
+  
+  <a href="{% url 'player:GiftPlayer' pk=player.pk %}"
+    >
+    Gift This Player?
+  </a
+  >
+  
+ 
+    </div>
+  </div>
+</div>
+
+{% else %}
+{% endif %}
+
+
+{% endblock %}

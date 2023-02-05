@@ -1,0 +1,115 @@
+{%extends 'registration/base.html'%} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col mx-1">
+      <table class="table table-striped table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>IPL</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in openers %}
+          <tr>
+            <td>
+              <a
+                class="player_urls_list"
+                href="{% url 'player:PlayerDetail' pk=x.pk %}"
+                >{{x.name}}</a
+              >
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          {% endfor %} {% for x in middle_order %}
+          <tr>
+            <td>
+              <a
+                class="player_urls_list"
+                href="{% url 'player:PlayerDetail' pk=x.pk %}"
+                >{{x.name}}</a
+              >
+            </td>
+            <td>
+              
+            </td>
+            <td>
+             
+            </td>
+          </tr>
+          {% endfor %} {% for x in finisher %}
+          <tr>
+            <td>
+              <a
+                class="player_urls_list"
+                href="{% url 'player:PlayerDetail' pk=x.pk %}"
+                >{{x.name}}</a
+              >
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td>
+              <a
+                class="player_urls_list"
+                href="{% url 'player:PlayerDetail' pk=batting_allrounder.pk %}"
+                >{{batting_allrounder.name}}</a
+              >
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                class="player_urls_list"
+                href="{% url 'player:PlayerDetail' pk=bowling_allrounder.pk %}"
+                >{{bowling_allrounder.name}}</a
+              >
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          {% for x in bowlers %}
+          <tr>
+            <td>
+              <a
+                class="player_urls_list"
+                href="{% url 'player:PlayerDetail' pk=x.pk %}"
+                >{{x.name}}</a
+              >
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

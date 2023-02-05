@@ -1,0 +1,170 @@
+{% extends 'registration/base.html' %}
+{%block content%}
+
+{% if result1 == True or result2 == True or result3 == True or result4 == True or result5 == True or result6 == True or result7 == True or res1 == True or res2 == True or res3 == True or res4 == True or res5 %}
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Oops, it didn't work! View the problem
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Insufficient Players</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          {% if result1 == True %}
+          <a href="{%url 'player:newplayer'%}">Please insert openers!</a>
+          {% elif result2 == True %}
+          <a href="{%url 'player:newplayer'%}">Please insert a middle order batsman!</a> 
+          {% elif result3 == True %}
+          <a href="{%url 'player:newplayer'%}">Please Insert a Finisher</a>
+          {% elif result4 == True %}
+          <a href="{%url 'player:newplayer'%}">Please insert a batting allrounder!</a>
+          {% elif result5 == True %}
+          <a href="{%url 'player:newplayer'%}">Please insert a bowling allrounder!</a>
+          {% elif result6 == True %}
+          <a href="{%url 'player:newplayer'%}">Please insert a fast bowler!</a>
+          {% elif result7 == True %}
+          <a href="{%url 'player:newplayer'%}">Please insert a spin bowler!</a>
+          {% elif res1 == True %}
+          <a href="{%url 'player:newplayer'%}">There is a repetition of opener and batting allrounder -> please insert an opener or a batting allrounder and try again!</a>
+          {% elif res2 == True %}
+          <a href="{%url 'player:newplayer'%}">There is a repetition of middle order batsman and batting allrounder -> please insert an middle order batsman or a batting allrounder and try again!</a>
+          {% elif res3 == True %}
+          <a href="{%url 'player:newplayer'%}">There is a repetition of fast bowler and bowling allrounder -> please insert an fast bowler or a bowling allrounder and try again!</a>
+          {% elif res4 == True %}
+          <a href="{%url 'player:newplayer'%}">There is a repetition of spin bowler and bowling allrounder -> please insert an spin bowler or a bowling allrounder and try again!</a>
+          {% elif res5 == True %}
+          <a href="{%url 'player:newplayer'%}">There is a repetition of finisher and batting allrounder -> please insert an finisher or a batting allrounder and try again!</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+{% endif %}
+
+{% else %}
+{{heading}}
+<div class="container">
+    <div class="row">
+      <div class="col mx-1">
+          <table class="table table-striped table">
+            <thead class="thead-dark">
+              <tr>
+                  <th>Name</th>
+                  <th>Country</th>
+                  <th>IPL</th>
+              </tr>
+            </thead>
+              <tbody>
+                  {% for x in openers %}
+                  <tr>
+                      <td>
+                          
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a>
+                      </td>
+                      <td>
+                          
+                      </td>
+                      <td>
+                          
+                      </td>
+                  </tr>
+                  {% endfor %} {% for x in Middle_Order %}
+                  <tr>
+                      <td>
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a>
+                      </td>
+                      <td>
+                          
+                      </td>
+                      <td>
+                          
+                      </td>
+                  </tr>
+                  {% endfor %} {% for x in Finisher %}
+                  <tr>
+                      <td>
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a>
+                      </td>
+                      <td>
+                          
+                      </td>
+                      <td>
+                          
+                      </td>
+                      {% endfor %}
+                  </tr>
+                  <tr>
+                      <td>
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=Batting_Allrounder.pk %}">{{Batting_Allrounder.name}}</a>
+                      </td>
+                      <td>
+                          <img src="{{Batting_Allrounder.intlteam.flagintl.url}}" alt="">
+                      </td>
+                      <td>
+                          <img src="{{Batting_Allrounder.iplteam.flagipl.url}}" alt="IPL NOT PLAYED">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=Bowling_Allrounder.pk %}">{{Bowling_Allrounder.name}}</a>
+                      </td>
+                      <td>
+                          
+                      </td>
+                      <td>
+                          
+                      </td>
+                  </tr>
+                  {% for x in Fast_Bowler %}
+                  <tr>
+                      <td>
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a>
+                      </td>
+                      <td>
+                          
+                      </td>
+                      <td>
+                          
+                      </td>
+                  </tr>
+                  {% endfor %}
+                  {% for x in Spin_Bowler %}
+                  <tr>
+                      <td>
+                          <a class="player_urls_list" href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a>
+                      </td>
+                      <td>
+                          
+                      </td>
+                      <td>
+                          
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
+
+
+
+
+{%endblock%}

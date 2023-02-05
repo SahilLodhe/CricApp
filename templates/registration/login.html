@@ -1,0 +1,60 @@
+{% extends 'registration/base.html' %} {%block content%} 
+<br>
+<br>
+<br>
+<br>
+<div class="login">
+<form id="login" action="" method="POST">
+  {% csrf_token %}
+  <!-- <input
+    type="text"
+    name="username"
+    placeholder="Username"
+    class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800"
+    style="border: 1px solid #d3d5d8 !important"
+  />
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800"
+    style="border: 1px solid #d3d5d8 !important"
+  />
+
+  <button
+    type="submit"
+    class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full"
+  >
+    Login
+  </button>
+  <div class="text-center mt-5 space-x-2">
+    <p class="text-base">
+      Not registered? <a href="{% url 'signup' %}" class=""> Create a account </a>
+    </p>
+  </div> -->
+  <label class="label_login"><b>User Name     
+  </b>    
+  </label>    
+  <input type="text" name="username" placeholder="Username" id="Uname" placeholder="Username">    
+  <br><br>    
+  <label class="label_login"><b>Password     
+  </b>    
+  </label>    
+  <input type="password" name="password" id="Pass" placeholder="Password">    
+  <br><br>    
+  <!-- <input type="button" name="log" id="log" value="Log In Here">        -->
+  <button
+  type="submit"
+  name="log"
+  id="log"
+>
+  Login
+</button>
+  <br><br>    
+  <a href="{% url 'signup' %}"><span class="span_login">Create an account</span> </a>   
+     
+  <br><br>    
+  
+</form>
+</div>
+{%endblock%}

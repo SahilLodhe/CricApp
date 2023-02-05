@@ -1,0 +1,31 @@
+{%extends 'registration/base.html'%}
+
+{% block content %}
+hello, this is the intlteam_detail page
+{{hi}}
+<h1>The name of the team is : {{intlteam.name}}</h1>
+<h1>The total number of ODI matches played by {{intlteam.name}} are : {{intlteam.ODI_matches_played}}</h1>
+<h1>The total number of Test matches played by {{intlteam.name}} are : {{intlteam.Test_matches_played}}</h1>
+<h1>The total number of T20 matches played by {{intlteam.name}} are : {{intlteam.T20_matches_played}}</h1>
+<h1>The total number World Cups won by {{intlteam.name}} are : {{intlteam.World_cups_won}}</h1>
+<h1>The total number T20 World Cups won by {{intlteam.name}} are : {{intlteam.T20WC_trophies_won}}</h1>
+<h1>The total number Asia Cups won by {{intlteam.name}} are : {{intlteam.Asia_Cups_Won}}</h1>
+<h1>The total number Champion Trophies won by {{intlteam.name}} are : {{intlteam.Champion_trophies_won}}</h1>
+
+
+
+
+{% comment %} <h2><a href="{% url 'player:INTLTeamUpdate' pk=intlteam.pk %}">DO YOU WANT TO UPDATE DETAILS?</a></h2>
+<h2><a href="{% url 'player:INTLTeamDelete' pk=intlteam.pk %}">DO YOU WANT TO DELETE THE TEAM?</a></h2> {% endcomment %}
+
+{% comment %} <a href="{% url 'player:Playersofintlteam' pk=intlteam.pk %}">View the list of players present in team {{intlteam.name}}</a><br>
+<a href="{% url 'player:ODITeamX1' pk=intlteam.pk %}">view the best ODI X1 for team {{intlteam.name}}</a><br>
+<a href="{% url 'player:TestTeamX1' pk=intlteam.pk %}">view the best Test X1 for team {{intlteam.name}}</a><br>
+<a href="{% url 'player:T20TeamX1' pk=intlteam.pk %}">view the best T20 X1 for team {{intlteam.name}}</a><br> {% endcomment %}
+{% endblock %}
+
+<!-- name = models.CharField(max_length=20)
+    matches_played = models.IntegerField()
+    matches_won = models.IntegerField()
+    matches_lost = models.IntegerField()
+    trophies_won = models.IntegerField(default=0) -->

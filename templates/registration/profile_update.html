@@ -1,0 +1,11 @@
+{% extends 'registration/base.html' %} {% load bootstrap3 %} {%block content%} 
+
+<form method="POST">
+{% csrf_token %} {{% bootstrap_form user_form %}} {{% bootstrap_form profile_form %}}
+<button type="submit" class="save btn btn-dark">Edit</button>
+</form>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,1122 @@
+{%extends 'registration/base.html'%} {% block content %}
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"> -->
+
+
+<br />
+<!-- <h1>Batting averages</h1> -->
+<div class="header" style="background-color: grey;">
+  <h1>Batting averages</h1>
+</div>
+<br />
+<div class="row">
+  <!-- {{text}}
+    {% for batsman in ODI_bat_avg_batsmen %}
+    {{batsman.name}}
+    {% endfor %} -->
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart1" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart1').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in ODI_bat_avg_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'ODI avg batsmen',
+                      data: [{% for batsman in ODI_bat_avg_batsmen %} {{batsman.get_bat_avg_ODI}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart2" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart2').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in Test_bat_avg_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'Test avg batsmen',
+                      data: [{% for batsman in Test_bat_avg_batsmen %} {{batsman.get_bat_avg_Test}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart3" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart3').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in IPL_bat_avg_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'IPL avg batsmen',
+                      data: [{% for batsman in IPL_bat_avg_batsmen %} {{batsman.get_bat_avg_IPL}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart4" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart4').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in T20_bat_avg_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'T20 avg batsmen',
+                      data: [{% for batsman in T20_bat_avg_batsmen %} {{batsman.get_bat_avg_T20}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- </div>
+        </div>
+        </div> -->
+
+
+<br />
+<br />
+<div class="header" style="background-color: grey;">
+  <h1>Batting Strike Rates</h1>
+</div>
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart5" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart5').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in ODI_SR_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'ODI SR batsmen',
+                      data: [{% for batsman in ODI_SR_batsmen %} {{batsman.get_SR_ODI}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart6" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart6').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in Test_SR_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'Test SR batsmen',
+                      data: [{% for batsman in Test_SR_batsmen %} {{batsman.get_SR_Test}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart7" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart7').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in IPL_SR_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'IPL SR batsmen',
+                      data: [{% for batsman in IPL_SR_batsmen %} {{batsman.get_SR_IPL}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart8" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart8').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for batsman in T20_SR_batsmen %}'{{batsman.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'T20 SR batsmen',
+                      data: [{% for batsman in T20_SR_batsmen %} {{batsman.get_SR_T20}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="header" style="background-color: grey;">
+    <h1>Bowling Economies</h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart_eco_ODI" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart_eco_ODI').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in ODI_eco_bowlers %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'ODI eco bowlers',
+                      data: [{% for bowler in ODI_eco_bowlers %} {{bowler.get_economy_ODI}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart_eco_Test" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart_eco_Test').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in Test_eco_bowlers %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'Test eco bowlers',
+                      data: [{% for bowler in Test_eco_bowlers %} {{bowler.get_economy_Test}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="header" style="background-color: grey;">
+    <h1>Bowling Average</h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart_avg_ODI" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart_avg_ODI').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in ODI_bowl_avg %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'ODI avg bowlers',
+                      data: [{% for bowler in ODI_bowl_avg %} {{bowler.get_bowl_avgODI}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart_avg_Test" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart_avg_Test').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in Test_bowl_avg %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'Test avg bowlers',
+                      data: [{% for bowler in Test_bowl_avg %} {{bowler.get_bowl_avgTest}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart_avg_IPL" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart_avg_IPL').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in IPL_bowl_avg %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'IPL avg bowlers',
+                      data: [{% for bowler in IPL_bowl_avg %} {{bowler.get_bowl_avgIPL}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="myChart_avg_T20" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart_avg_T20').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in T20_bowl_avg %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'T20 avg bowlers',
+                      data: [{% for bowler in T20_bowl_avg %} {{bowler.get_bowl_avgT20}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+  
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="header" style="background-color: grey;">
+    <h1>Wickets Taken</h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="WicketsODI" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('WicketsODI').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in wickets_ODI %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'ODI Wickets Bowlers',
+                      data: [{% for bowler in wickets_ODI %} {{bowler.wicketsODI}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="WicketsTest" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('WicketsTest').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in wickets_Test %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'Test Wickets Bowlers',
+                      data: [{% for bowler in wickets_Test %} {{bowler.wicketsTest}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="WicketsIPL" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('WicketsIPL').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in wickets_IPL %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'IPL Wickets Bowlers',
+                      data: [{% for bowler in wickets_IPL %} {{bowler.wicketsIPL}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="col-md-6 my-4">
+    <div class="bg-white">
+      <div class="card-body">
+        <canvas id="WicketsT20" width="300" height="200"></canvas>
+        <script>
+            var ctx = document.getElementById('WicketsT20').getContext('2d');
+          //   console.log(alert("hey this is working"))
+            var myChart1 = new Chart(ctx,{
+              type: 'bar',
+              data: {
+                  labels: [{% for bowler in wickets_T20 %}'{{bowler.name}}',  {% endfor %}],
+                  datasets:[{
+                      label: 'T20 Wickets Bowlers',
+                      data: [{% for bowler in wickets_T20 %} {{bowler.wicketsT20}},{% endfor %}],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                              ],
+                              borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+            });
+        </script>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "registration/base.html" %} {% block content %} 
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  View My Players
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">My Players</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container px-50 py-50">
+          <div class="row">
+            <div class="col mx-1">
+              <table>
+                <tbody>
+                  <th>Batsmen</th>
+                  {% for x in dataset %}
+                  <tr>
+                    {% if x.ownerplayer.username == user.username %}
+                    {% if x.Role == "Batsman" %}
+                    <td><a href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a></td>
+                    {% endif %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        
+            <div class="col mx-1">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Batting Allrounders</th>
+                  </tr>
+                  {% for x in dataset %}
+                  <tr>
+                    {% if x.ownerplayer.username == user.username %}
+                    {% if x.Role == "Batting Allrounder" %}
+                    <td><a href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a></td>
+                    {% endif %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        
+            <div class="col mx-1">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Bowling Allrounders</th>
+                  </tr>
+                  {% for x in dataset %}
+                  <tr>
+                    {% if x.ownerplayer.username == user.username %}
+                    {% if x.Role == "Bowling Allrounder" %}
+                    <td><a href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a></td>
+                    {% endif %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        
+            <div class="col mx-1">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Fast Bowlers</th>
+                  </tr>
+                  {% for x in dataset %}
+                  <tr>
+                    {% if x.ownerplayer.username == user.username %}
+                    {% if x.Role == "Fast Bowler" %}
+                    <td><a href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a></td>
+                    {% endif %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        
+            <div class="col mx-1">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Spin Bowlers</th>
+                  </tr>
+                  {% for x in dataset %}
+                  <tr>
+                    {% if x.ownerplayer.username == user.username %}
+                    {% if x.Role == "Spin Bowler" %}
+                    <td><a href="{% url 'player:PlayerDetail' pk=x.pk %}">{{x.name}}</a></td>
+                    {% endif %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        
+          </div>
+        </div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{% url 'player:MyODITeamX1' %}"><button type="button" class="btn btn-info">View My Best ODIX1</button></a>
+        <a href="{% url 'player:MyTestTeamX1' %}"><button type="button" class="btn btn-info">View My Best TESTX1</button></a>
+        <a href="{% url 'player:MyT20TeamX1' %}"><button type="button" class="btn btn-info">View My Best T20X1</button></a>
+        <a href="{% url 'player:MYIPLTeamX1' %}"><button type="button" class="btn btn-info">View My Best IPLX1</button></a>
+        <a href="{% url 'player:ViewMyStats' %}"><button type="button" class="btn btn-info">View My Graphs</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-4" id="profile_card">
+    <div
+      class="image d-flex flex-column justify-content-center align-items-center" id="pfp"
+    >
+      <button class="btn btn-secondary" id="profile_button">
+        <!-- <img class="img-responsive" src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /> -->
+        <img src="{{request.user.profile.img.url}}" height="400" width="400" border-radius: 45%; />
+      </button>
+      <span class="name mt-3">{{user.username}}</span>
+      <span class="idd">{{user.email}}</span>
+      <span class="idd">{{user.first_name}} {{user.last_name}}</span>
+      <div
+        class="d-flex flex-row justify-content-center align-items-center gap-2"
+      >
+        <!-- <span class="idd1">{{user.first_name}} {{user.last_name}}</span> -->
+        <span><i class="fa fa-copy"></i></span>
+      </div>
+      <div
+        class="d-flex flex-row justify-content-center align-items-center mt-3"
+      >
+        <span class="number">{{my_players}} <span class="follow">Players</span></span>
+      </div>
+      <div class="d-flex mt-2">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
+          View My Players
+        </button>
+      </div>
+      <div class="text mt-3" id="profile_bio">
+        <span
+          >{{user.profile.bio}}
+          <br />
+          I live in : {{user.profile.location}}
+          <br>
+          Your Birthday is on {{user.profile.birth_date}} !
+        </span>
+      </div>
+      <div
+        class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"
+      >
+        <a href={{user.profile.Twitter}}><span><i class="fa fa-twitter"></i></span></a>
+        <a href={{user.profile.Facebook}}><span><i class="fa fa-facebook-f"></i></span></a>
+        <a href={{user.profile.Instagram}}><span><i class="fa fa-instagram"></i></span></a>
+        <a href={{user.profile.LinkedIn}}><span><i class="fa fa-linkedin"></i></span></a>
+        <a href={{user.profile.Github}}><span><i class="fa fa-github"></i></span></a>
+      </div>
+      <div class="px-2 rounded mt-4 date">
+        <span class="join">Last Logged in : {{user.last_login}}</span>
+      </div>
+      <div class="px-2 rounded mt-4 date">
+        <span class="join"> Joined on : {{user.date_joined}}</span>
+      </div>
+      {% if user.is_superuser %}
+      <div class="px-2 rounded mt-4 date">
+        <span class="join">You are a superuser</span>
+      </div>
+      {% else %}
+      <div class="pS@n D!ego17
+      x-2 rounded mt-4 date">
+        <span class="join">You are not a superuser</span>
+      </div>
+      {% endif %}
+      <div class="px-2 rounded mt-4 date">
+        <a href="{% url 'player:ProfileUpdateView' %}"><span class="join"> Update Profile</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+ {% endblock %}
