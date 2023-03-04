@@ -21,9 +21,26 @@ from player.models import INTLTeam,IPLTeam,Player,User,Profile_extend
 from player.forms import UserCreateForm,GiftPlayer,UserUpdateForm,PlayerCreationForm,EditUserForm
 # FOR CBV
 from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
-
+# for live data
+import requests
+from handcricketReset.settings import URL,APIKEY
 usernameglobal = get_user_model()
 # Create your views here.
+
+def trial(request):
+    url = 'https://cricbuzz-cricket.p.rapidapi.com/teams/v1/international'
+
+    headers = {
+        "X-RapidAPI-Key": APIKEY,
+        "X-RapidAPI-Host": URL
+    }
+
+    response = requests.request("GET", url, headers=headers).json()
+
+    # print(response.text)
+    context = {}
+    context['trial'] = response
+    return render(request,'api/trial.html',context)
 
 class ExtraProfile(CreateView):
     model = Profile_extend
