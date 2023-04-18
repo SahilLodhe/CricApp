@@ -1,0 +1,49 @@
+#gitlab ci uses docker images to run the pipeline and these images we have to define here. 
+image: docker:19.03.5
+services:
+  - docker:19.03.5-dind
+stages:
+  - Build
+  - Push
+
+before_script:
+    - apk add python3 #install it in our docker image
+    - pip3 install awscli==1.18.8  
+    - docker load --input data/image.tar #load the image from artifact from previous job 
+    - $(aws ecr get-login --no-include-email --region us-east-1)  #login command
+
+
+Build:
+  stage: Build
+  before_script: []
+  script: 
+    - mkdir data/
+    - docker build --compress -t proxy . # build our docker file in compress state in same path and tag it with "proxy"
+    - docker save --output data/image.tar proxy
+  artifacts:  # to pass file from one job to another
+    name: image
+    paths:
+      - data/
+
+Push Dev:
+  stage: Push
+  script: 
+    - docker tag proxy:latest $ECR_REPO:dev
+    - docker push $ECR_REPO:dev  #to push repo to AWS ECR
+  rules:
+    - if: "$CI_COMMIT_BRANCH=='main' "  # to specify when to run the job, when our branch in main. 
+  
+
+Push Release:
+ stage: Push
+ script:
+  - export TAGGED_ECR_REPO=$ECR_REPO:$(echo $CI_COMMIT_TAG | sed 's/-release//')  #to strip of the release no and append it to ECR_REPO
+  - docker tag proxy:latest $TAGGED_ECR_REPO
+  - docker push $TAGGED_ECR_REPO
+  - docker tag $TAGGED_ECR_REPO $ECR_REPO:latest
+  - docker push $ECR_REPO:latest
+
+ rulse:
+  - if: "$CI_COMMIT_BRANCH =~ /^*-release$/"  #this will be triggered when anything ending with release comes. 
+
+  
