@@ -8,7 +8,6 @@ django-crispy-forms==1.14.0
 fonttools==4.38.0
 kiwisolver==1.4.4
 matplotlib==3.6.3
-mysqlclient==2.1.1
 numpy==1.24.1
 packaging==23.0
 Pillow==9.4.0
