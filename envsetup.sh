@@ -11,8 +11,8 @@ fi
 source env/bin/activate
 
 
-pip3 install -r requirements1.txt -y
-pip3 install -r requrements.txt -y
+pip3 install -r requirements1.txt
+pip3 install -r requrements.txt
 
 if [ -d "logs" ] 
 then
