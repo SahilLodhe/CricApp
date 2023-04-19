@@ -7,7 +7,8 @@ else
     python3 -m venv env
 fi
 # source .env/bin/activate
-source env/bin/bash/activate
+# source env/bin/bash/activate
+source Cricapp/env/bin/activate
 
 
 pip3 install -r requirements1.txt
