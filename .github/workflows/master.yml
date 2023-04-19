@@ -17,3 +17,4 @@ jobs:
         username: myFtpUserName
         password: ${{ secrets.ftp_password }}
         server-dir: /deploy/
+        
