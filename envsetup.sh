@@ -8,7 +8,7 @@ else
 fi
 # source .env/bin/activate
 # source env/bin/bash/activate
-source env/bin/activate
+# source env/bin/activate
 
 
 pip3 install -r requirements1.txt
