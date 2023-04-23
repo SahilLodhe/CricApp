@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Player,IPLTeam,INTLTeam
+from .models import Player,IPLTeam,INTLTeam,User,Profile_extend
 
 class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,11 +13,11 @@ class INTLTeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = INTLTeam
         fields = ('__all__')
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['__all__']
-# class ProfileExtendSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Profile_extend
-#         fields = ['__all__']
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('__all__')
+class ProfileExtendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile_extend
+        fields = ('__all__')

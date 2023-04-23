@@ -26,9 +26,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 router = routers.DefaultRouter()
-router.register('players',views.PlayerView, basename='players')
 router.register('iplteams',views.IPLTeamView, basename='iplteams')
+router.register('players',views.PlayerView, basename='players')
 router.register('intlteams',views.INTLTeamView, basename='intlteams')
+router.register('users',views.UserView, basename='users')
+router.register('profileextends',views.ProfileExtendView, basename='profileextends')
 # router.register('users',views.User, basename='users')
 # router.register('profileextends',views.ProfileExtendView, basename='profileextends')
 # routeriplteams = routers.DefaultRouter()

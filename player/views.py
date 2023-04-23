@@ -23,7 +23,9 @@ from player.forms import UserCreateForm,GiftPlayer,UserUpdateForm,PlayerCreation
 from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 # for REST API
 from rest_framework import viewsets
-from .serializers import PlayerSerializer,INTLTeamSerializer,IPLTeamSerializer
+from rest_framework import generics
+from rest_framework.generics import ListAPIView
+from .serializer import PlayerSerializer,INTLTeamSerializer,IPLTeamSerializer, UserSerializer, ProfileExtendSerializer
 
 usernameglobal = get_user_model()
 # Create your views here.
@@ -32,17 +34,17 @@ class PlayerView(viewsets.ModelViewSet):
     serializer_class = PlayerSerializer
     queryset = Player.objects.all()
 class INTLTeamView(viewsets.ModelViewSet):
-    serializer_class = INTLTeam
+    serializer_class = INTLTeamSerializer
     queryset = INTLTeam.objects.all()
 class IPLTeamView(viewsets.ModelViewSet):
-    serializer_class = IPLTeam
+    serializer_class = IPLTeamSerializer
     queryset = IPLTeam.objects.all()
-# class UserView(viewsets.ModelViewSet):
-#     serializer_class = User
-#     queryset = User.objects.all()
-# class ProfileExtendView(viewsets.ModelViewSet):
-#     serializer_class = Profile_extend
-#     queryset = Profile_extend.objects.all()
+class UserView(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+class ProfileExtendView(viewsets.ModelViewSet):
+    serializer_class = ProfileExtendSerializer
+    queryset = Profile_extend.objects.all()
 
 class ExtraProfile(CreateView):
     model = Profile_extend
