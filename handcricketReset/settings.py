@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'player',
     'bootstrap3',
     'crispy_forms',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'handcricketReset.urls'
@@ -107,7 +110,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# WHITELISTING REACT PORT for the interaction of the frontend
+# CORS_ORIGIN_WHITELIST = [
+#     'https://localhost:3000',
+#     'https://localhost:3001',
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
