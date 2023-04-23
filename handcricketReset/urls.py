@@ -19,10 +19,26 @@ from django.contrib import admin
 from django.urls import path
 # from numpy import r_
 from django.conf.urls import include
+from django.urls import include,path
 from player import urls
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+router = routers.DefaultRouter()
+router.register('players',views.PlayerView, basename='players')
+router.register('iplteams',views.IPLTeamView, basename='iplteams')
+router.register('intlteams',views.INTLTeamView, basename='intlteams')
+# router.register('users',views.User, basename='users')
+# router.register('profileextends',views.ProfileExtendView, basename='profileextends')
+# routeriplteams = routers.DefaultRouter()
+# routeriplteams.register('iplteams',views.IPLTeamView, basename='iplteams')
+# routerintlteams = routers.DefaultRouter()
+# routerintlteams.register('intlteams',views.INTLTeamView, basename='intlteams')
+# routerusers = routers.DefaultRouter()
+# routerusers.register('users',views.UserView, basename='users')
+# routerprofileextend = routers.DefaultRouter()
+# routerprofileextend.register('profileextends',views.UserView, basename='profileextends')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('player.urls',namespace='player')),
@@ -31,6 +47,7 @@ urlpatterns = [
     path('signup/',views.SignUp.as_view(),name='signup'),
     path('test/',views.TestPage.as_view(),name='test'),
     path('thanks/',views.ThanksPage.as_view(),name='thanks'),
+    path('api/',include(router.urls)),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
