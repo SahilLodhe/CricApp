@@ -30,6 +30,7 @@ from .serializer import PlayerSerializer,INTLTeamSerializer,IPLTeamSerializer, U
 usernameglobal = get_user_model()
 # Create your views here.
 
+# REST API
 class PlayerView(viewsets.ModelViewSet):
     serializer_class = PlayerSerializer
     queryset = Player.objects.all()
@@ -45,6 +46,17 @@ class UserView(viewsets.ModelViewSet):
 class ProfileExtendView(viewsets.ModelViewSet):
     serializer_class = ProfileExtendSerializer
     queryset = Profile_extend.objects.all()
+
+# REST API ENDED
+
+def search_venues(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        players = Player.objects.filter(name__contains=searched)
+        return render(request, 'registration/search_venues.html',{'searched':searched,'players':players})
+    else:
+        return render(request, 'registration/search_venues.html',{})
+
 
 class ExtraProfile(CreateView):
     model = Profile_extend

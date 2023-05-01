@@ -1,0 +1,17 @@
+{% extends 'registration/base.html' %} {%block content%}
+<center>
+    {% if searched %}
+    <h1>You searched for "{{ searched }}" : </h1>
+    {% for player in players %}
+    <a
+        class="player_urls_list"
+        href="{% url 'player:PlayerDetail' pk=player.pk %}"
+        >{{player.name}}</a
+    >
+    <br>
+    {% endfor %}
+    {% else %}
+    <h1>Hey! You forgot to search for a Player...</h1>
+    {% endif %}
+</center>
+{%endblock%}

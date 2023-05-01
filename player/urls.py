@@ -46,4 +46,5 @@ urlpatterns = [
     path('ProfileUpdateView/',views.ProfileUpdateView.as_view(),name='ProfileUpdateView'),
     path('ViewStats/',views.ViewStats,name='ViewStats'),
     path('ViewMyStats/',views.viewuserStats,name='ViewMyStats'),
+    path('search_venues/',views.search_venues,name='search_venues'),
 ]

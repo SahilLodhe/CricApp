@@ -122,7 +122,7 @@
           {% else %}
 
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'login'%}">Log In</a>
+            <a class="nav-link" href="{%url 'login'%}">New Player</a>
           </li>
           {% endif %}
             <li class="nav-item">
@@ -165,9 +165,14 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'login'%}">Log In</a>            
+            <a class="nav-link" href="{%url 'login'%}">Profile</a>            
           </li>
           {% endif %}
+          <form class="d-flex" method="post" action="{% url 'player:search_venues' %}">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search for Players" aria-label="Search" name="searched">
+            <button class="btn btn-outline-secondary" type="submit"></button>
+          </form>
         </ul>
       </div>
     </nav>
