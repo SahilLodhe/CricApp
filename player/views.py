@@ -64,8 +64,10 @@ class ExtraProfile(CreateView):
     # fields = ['Twitter','Facebook','Instagram','LinkedIn','Github','bio','birth_date','location']
     fields = '__all__'
 
-class AboutView(TemplateView):
-    template_name = 'registration/about.html'
+# class AboutView(TemplateView):
+#     template_name = 'registration/about.html'
+def AboutView(request):
+    return render(request,'registration/about.html')
 
 class TestPage(TemplateView):
     template_name = 'registration/test.html'

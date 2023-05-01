@@ -10,7 +10,7 @@ from player import views
 app_name = 'player'
 
 urlpatterns = [
-    path('',views.AboutView.as_view(),name='about'),
+    path('',views.AboutView,name='about'),
     path('IPLTeamList/',views.IPLTeamListView.as_view(),name='IPLTeamList'),
     path('newiplteam/',views.CreateIPLTeam.as_view(),name='newiplteam'),
     path('IPLTeamDetail/<int:pk>/',views.IPLTeamDetailView.as_view(),name='IPLTeamDetail'),
