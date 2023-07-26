@@ -46,6 +46,8 @@ class UserView(viewsets.ModelViewSet):
 class ProfileExtendView(viewsets.ModelViewSet):
     serializer_class = ProfileExtendSerializer
     queryset = Profile_extend.objects.all()
+# class UserView(viewsets.ModelViewSet):
+#     serializer_class 
 
 # REST API ENDED
 
@@ -412,13 +414,13 @@ def gift_player(request,pk:int):
 def worldODIXI(request):
     model = Player
     # getting the best openers
-    openers = sorted(Player.objects.all().filter(batting_position__exact="Opener").filter(ODIs_played__gt=80),key = lambda x: -x.get_bat_avg_ODI()) # the negative sign before x.get_bat_avg_ODI is for sorting from highest to lowest
-    middle_orders = sorted(Player.objects.all().filter(batting_position__exact="Middle Order").filter(ODIs_played__gt=80),key = lambda x: -x.get_bat_avg_ODI())
-    finisher = sorted(Player.objects.all().filter(batting_position__exact="Finisher").filter(ODIs_played__gt=80),key = lambda x: -x.get_SR_ODI())
-    batting_allrounder = sorted(Player.objects.all().filter(Role__exact="Batting Allrounder").filter(ODIs_played__gt=80),key = lambda x: -x.get_bat_avg_ODI())
-    bowling_allrounder = sorted(Player.objects.all().filter(Role__exact="Bowling Allrounder").filter(ODIs_played__gt=80),key = lambda x: x.get_economy_ODI())
-    fast_bowlers = sorted(Player.objects.all().filter(Role__exact="Fast Bowler").filter(ODIs_played__gt=80),key = lambda x: x.get_bowl_avgODI())
-    spin_bowlers = sorted(Player.objects.all().filter(Role__exact="Spin Bowler").filter(ODIs_played__gt=80),key = lambda x: x.get_bowl_avgODI())
+    openers = sorted(Player.objects.all().filter(batting_position__exact="Opener").filter(ODIs_played__gt=20),key = lambda x: -x.get_bat_avg_ODI()) # the negative sign before x.get_bat_avg_ODI is for sorting from highest to lowest
+    middle_orders = sorted(Player.objects.all().filter(batting_position__exact="Middle Order").filter(ODIs_played__gt=20),key = lambda x: -x.get_bat_avg_ODI())
+    finisher = sorted(Player.objects.all().filter(batting_position__exact="Finisher").filter(ODIs_played__gt=20),key = lambda x: -x.get_SR_ODI())
+    batting_allrounder = sorted(Player.objects.all().filter(Role__exact="Batting Allrounder").filter(ODIs_played__gt=20),key = lambda x: -x.get_bat_avg_ODI())
+    bowling_allrounder = sorted(Player.objects.all().filter(Role__exact="Bowling Allrounder").filter(ODIs_played__gt=20),key = lambda x: x.get_economy_ODI())
+    fast_bowlers = sorted(Player.objects.all().filter(Role__exact="Fast Bowler").filter(ODIs_played__gt=20),key = lambda x: x.get_bowl_avgODI())
+    spin_bowlers = sorted(Player.objects.all().filter(Role__exact="Spin Bowler").filter(ODIs_played__gt=20),key = lambda x: x.get_bowl_avgODI())
     selected_openers = []
     selected_middle_order = []
     selected_finishers = []
@@ -495,13 +497,13 @@ def worldODIXI(request):
 def worldTestXI(request):
     model = Player
     # getting the best openers
-    openers = sorted(Player.objects.all().filter(batting_position__exact="Opener").filter(Tests_played__gt=50),key = lambda x: -x.get_bat_avg_Test()) # the negative sign before x.get_bat_avg_ODI is for sorting from highest to lowest
-    middle_orders = sorted(Player.objects.all().filter(batting_position__exact="Middle Order").filter(Tests_played__gt=50),key = lambda x: -x.get_bat_avg_Test())
-    finisher = sorted(Player.objects.all().filter(batting_position__exact="Finisher").filter(Tests_played__gt=50),key = lambda x: -x.get_bat_avg_Test())
-    batting_allrounder = sorted(Player.objects.all().filter(Role__exact="Batting Allrounder").filter(Tests_played__gt=50),key = lambda x: -x.get_bat_avg_Test())
-    bowling_allrounder = sorted(Player.objects.all().filter(Role__exact="Bowling Allrounder").filter(Tests_played__gt=50),key = lambda x: x.get_bowl_avgTest())
-    fast_bowlers = sorted(Player.objects.all().filter(Role__exact="Fast Bowler").filter(Tests_played__gt=50),key = lambda x: x.get_bowl_avgTest())
-    spin_bowlers = sorted(Player.objects.all().filter(Role__exact="Spin Bowler").filter(Tests_played__gt=50),key = lambda x: x.get_bowl_avgTest())
+    openers = sorted(Player.objects.all().filter(batting_position__exact="Opener").filter(Tests_played__gt=10),key = lambda x: -x.get_bat_avg_Test()) # the negative sign before x.get_bat_avg_ODI is for sorting from highest to lowest
+    middle_orders = sorted(Player.objects.all().filter(batting_position__exact="Middle Order").filter(Tests_played__gt=10),key = lambda x: -x.get_bat_avg_Test())
+    finisher = sorted(Player.objects.all().filter(batting_position__exact="Finisher").filter(Tests_played__gt=10),key = lambda x: -x.get_bat_avg_Test())
+    batting_allrounder = sorted(Player.objects.all().filter(Role__exact="Batting Allrounder").filter(Tests_played__gt=10),key = lambda x: -x.get_bat_avg_Test())
+    bowling_allrounder = sorted(Player.objects.all().filter(Role__exact="Bowling Allrounder").filter(Tests_played__gt=10),key = lambda x: x.get_bowl_avgTest())
+    fast_bowlers = sorted(Player.objects.all().filter(Role__exact="Fast Bowler").filter(Tests_played__gt=10),key = lambda x: x.get_bowl_avgTest())
+    spin_bowlers = sorted(Player.objects.all().filter(Role__exact="Spin Bowler").filter(Tests_played__gt=10),key = lambda x: x.get_bowl_avgTest())
     selected_openers = []
     selected_middle_order = []
     selected_finishers = []
@@ -578,13 +580,13 @@ def worldTestXI(request):
 def worldT20XI(request):
     model = Player
     # getting the best openers
-    openers = sorted(Player.objects.all().filter(batting_position__exact="Opener").filter(T20s_played__gt=30),key = lambda x: -x.get_SR_T20()) # the negative sign before x.get_bat_avg_ODI is for sorting from highest to lowest
-    middle_orders = sorted(Player.objects.all().filter(batting_position__exact="Middle Order").filter(T20s_played__gt=30),key = lambda x: -x.get_bat_avg_T20())
-    finisher = sorted(Player.objects.all().filter(batting_position__exact="Finisher").filter(T20s_played__gt=30),key = lambda x: -x.get_bat_avg_T20())
-    batting_allrounder = sorted(Player.objects.all().filter(Role__exact="Batting Allrounder").filter(T20s_played__gt=30),key = lambda x: -x.get_SR_T20())
-    bowling_allrounder = sorted(Player.objects.all().filter(Role__exact="Bowling Allrounder").filter(T20s_played__gt=30),key = lambda x: x.get_economy_T20())
-    fast_bowlers = sorted(Player.objects.all().filter(Role__exact="Fast Bowler").filter(T20s_played__gt=30),key = lambda x: x.get_bowl_avgT20())
-    spin_bowlers = sorted(Player.objects.all().filter(Role__exact="Spin Bowler").filter(T20s_played__gt=30),key = lambda x: x.get_bowl_avgT20())
+    openers = sorted(Player.objects.all().filter(batting_position__exact="Opener").filter(T20s_played__gt=0),key = lambda x: -x.get_SR_T20()) # the negative sign before x.get_bat_avg_ODI is for sorting from highest to lowest
+    middle_orders = sorted(Player.objects.all().filter(batting_position__exact="Middle Order").filter(T20s_played__gt=0),key = lambda x: -x.get_bat_avg_T20())
+    finisher = sorted(Player.objects.all().filter(batting_position__exact="Finisher").filter(T20s_played__gt=0),key = lambda x: -x.get_bat_avg_T20())
+    batting_allrounder = sorted(Player.objects.all().filter(Role__exact="Batting Allrounder").filter(T20s_played__gt=0),key = lambda x: -x.get_SR_T20())
+    bowling_allrounder = sorted(Player.objects.all().filter(Role__exact="Bowling Allrounder").filter(T20s_played__gt=0),key = lambda x: x.get_economy_T20())
+    fast_bowlers = sorted(Player.objects.all().filter(Role__exact="Fast Bowler").filter(T20s_played__gt=0),key = lambda x: x.get_bowl_avgT20())
+    spin_bowlers = sorted(Player.objects.all().filter(Role__exact="Spin Bowler").filter(T20s_played__gt=0),key = lambda x: x.get_bowl_avgT20())
     selected_openers = []
     selected_middle_order = []
     selected_finishers = []
